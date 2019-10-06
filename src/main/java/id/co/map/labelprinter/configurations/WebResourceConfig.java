@@ -24,5 +24,6 @@ class WebResourceConfig extends WebMvcConfigurerAdapter{
         registry.addResourceHandler("/css/**").addResourceLocations("classpath:/static/css/");
         registry.addResourceHandler("/scripts/**").addResourceLocations("classpath:/static/scripts/");
         registry.addResourceHandler("/sweet_alert2/**").addResourceLocations("classpath:/static/sweet_alert2/");
+        registry.addResourceHandler("/sheet_js/**").addResourceLocations("classpath:/static/sheet_js/");
     }
 }
