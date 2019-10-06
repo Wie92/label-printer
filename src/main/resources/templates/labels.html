@@ -4,23 +4,77 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Label Printer</title>
+    <style>
+        .label-frame{
+            border: 1px solid #73AD21;
+            margin: 6px;
+            overflow: hidden;
+            width: 133px;
+            height: 57px;
+            position: relative;
+            float: left;
+        }
 
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        .label-desciption{
+            padding-right: 3px;
+            padding-left: 3px;
+            padding-top: 3px;
+            font-size: 4px;
+        }
 
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" th:href="@{/bower_components/bootstrap/dist/css/bootstrap.min.css}">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" th:href="@{/bower_components/font-awesome/css/font-awesome.min.css}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" th:href="@{/bower_components/Ionicons/css/ionicons.min.css}">
-    <!-- Theme style -->
-    <link rel="stylesheet" th:href="@{/dist/css/AdminLTE.min.css}">
-    <!-- Google Font -->
-    <link rel="stylesheet" th:href="@{/css/googleapis.css}">
+        .label-detail-left{
+            width: 60%;
+            padding-left: 3px;
+            float: left;
+            font-size: 4px;
+        }
 
-    <!-- Labels Style -->
-    <link rel="stylesheet" th:href="@{/css/labels.css}">
+        .label-detail-right{
+            margin-left: 60%;
+            width: 40%;
+            padding-left: 3px;
+            padding-right: 3px;
+            font-size: 4px;
+        }
+
+        .label-upc{
+            font-weight: bold;
+            text-align: center;
+            padding-top: 3px;
+            font-size: 4px;
+        }
+
+        .label-bpom-title{
+            font-weight: bold;
+            text-align: center;
+            font-size: 4px;
+        }
+
+        .label-mfg{
+            padding-top: 3px;
+            float: left;
+            width: 50%;
+            font-size: 4px;
+        }
+
+        .label-batch{
+            width: 50%;
+            margin-left: 50%;
+            font-size: 4px;
+            padding-top: 3px;
+        }
+
+        .label-company{
+            position: absolute;
+            bottom: 0;
+            font-size: 3px;
+        }
+
+        .label-detail1{
+            padding-top: 3px;
+            font-size: 4px;
+        }
+    </style>
 </head>
 <body>
 <div class="wrapper">
@@ -28,39 +82,25 @@
     <section class="invoice">
         <div class="row">
             <div class="col-sm-12">
-                <div class="label-print">
-                    <div class="col-sm-12 label-description">
-                        SEPHORA ROUGE MAT - SEPHORA ROUGE MATTE - MA14 Wanted!
-                        <p th:text="${text}">text</p>
-                    </div>
-                    <div class="col-sm-9 label-detail">
-                        <div class="col-sm-6">
-                            MGF Date: 15-Nov-18
-                        </div>
-                        <div class="col-sm-6">
-                            Batch: 319/617
-                        </div>
-                        <div class="col-sm-12">
-                            EXP Date: 14-Nov-21
-                        </div>
-                        <div class="col-sm-12">
-                            BPOM No.:NE51181001921
-                        </div>
-                        <div class="col-sm-12">
-                            Di impor & di distribusikan oleh :PT. Sephora Indonesia
-                        </div>
-                        <div class="col-sm-12">
-                            Recapital Building LT9 Jl Adityawarman Kav 55 Keb Baru  Jakarta - Indonesia
-                        </div>
-                    </div>
-                    <div class="col-sm-3 label-right">
-                        <div class="label-qr">
-                            <img alt="Embedded Image" src=" data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOgAAADoCAIAAABqyz8vAAAABmJLR0QA/wD/AP+gvaeTAAAEgElEQVR4nO3d0Y3jNhRA0ThIW+rE367MnaiwSQNRMFyQEK99zvdGI4wviMEL8fz4+fn5C2r+vvsF4E8IlyThkiRckoRLknBJEi5JwiVJuCQJlyThkiRckoRLknBJEi5J/4z+B4/HY8V7THd1z/jq/WfdS97t+fXP64oTlyThkiRckoRLknBJEi5JwiVpeI575fl8Hscx62m/dJ7n+/2e8qhZ89fVeypmPb/+eU0L9ziO1+s162m/N+sX8W3qn5c/FUgSLknCJUm4JAmXJOGSNG0cdmXWfdBZ88u79gGP/h4q73ll9fs7cUkSLknCJUm4JAmXJOGSJFySls9xd7N6L8Fu93c/lROXJOGSJFyShEuScEkSLknCJenr5ri7zVkr919348QlSbgkCZck4ZIkXJKES5JwSVo+x/3U+eLovd67vndtVOXzcuKSJFyShEuScEkSLknCJWnaOOw8z1mP2vyHfob65/UYndvNuj+62qy56af++92MduhPBZKES5JwSRIuScIlSbgkCZek4f8BUbmvWWffwv9z4pIkXJKES5JwSRIuScIlSbgkDc9x7/qesNVzzd3uuc76ubP2Nuz2/XBOXJKES5JwSRIuScIlSbgkCZek7fYqVO6P3rXXdvVcfNb7r36+E5ck4ZIkXJKES5JwSRIuScIl6ba9CrPulV656x7tXfsQdpt/r34fJy5JwiVJuCQJlyThkiRckoRL0rT7uLvNEWf51H0Lq+9hm+PCfxAuScIlSbgkCZck4ZIkXJKG57iXD7rpHurq/a9X6s8fddfe4itOXJKES5JwSRIuScIlSbgkCZek4b0KV+7aC1v5XrRRlT0Sd82bnbgkCZck4ZIkXJKES5JwSRIuSdPmuHfNHe+65zprvrv6PvHqOetd+xacuCQJlyThkiRckoRLknBJEi5Jw3Pcu+aOq+/jVvb+zrrPWt+D4cQlSbgkCZck4ZIkXJKES5JwSZq2H/fyB0T2wq7+/rDdvi9tN+a4fAXhkiRckoRLknBJEi5JwiVp+Rx3N5+6N/eu59+1R8KJS5JwSRIuScIlSbgkCZck4ZI0ba/CbmbNNVffl91tLjvL6k6cuCQJlyThkiRckoRLknBJEi5J077n7Pl8Hscx62m/dJ7n+/2e8qi79iGsnhOvntfetRdiWrjHcbxer1lP+71Z4dLiTwWShEuScEkSLknCJUm4JE0bh13ZbR65+nvRRv/91fuMvufquemse72zPkcnLknCJUm4JAmXJOGSJFyShEvS8jnubu7a/7raXe+/ep59xYlLknBJEi5JwiVJuCQJlyThkvR1c9wru81rd3uf1XskRjlxSRIuScIlSbgkCZck4ZIkXJKWz3FX72cdtXo/wyy7/d5GrX5/Jy5JwiVJuCQJlyThkiRckqaNw87znPWozX8oO3iMztvu2hswataegVGr9zbMstvnaK8CX0G4JAmXJOGSJFyShEuScEkanuPCDpy4JAmXJOGSJFyShEuScEkSLknCJUm4JAmXJOGSJFyShEuScEkSLkn/AhOOvwgMW3rjAAAAAElFTkSuQmCC"/>
-                        </div>
+                <div class="label-frame">
+                    <div class="label-desciption"> Description in Here </div>
+                    <div class="label-detail-left">
                         <div>
-                            UPC No: 815402023126
-                            <br> BPOM RI
+                            <div class="label-mfg"> MFG Date: 10 Okt 19</div>
+                            <div class="label-batch"> BATCH: 0001</div>
                         </div>
+                        <div class="label-detail1">EXP Date: 20 Okt 21</div>
+                        <div class="label-detail1">BPOM No.: 000000001</div>
+                        <div class="label-company">
+                            Diimpor & didistribusikan oleh PT. Sephora Indonesia<br>
+                            Recapital Building Lt.9 Jl. Adityawarman Kav.55 Keb Baru<br>
+                            Jakarta - Indonesia
+                        </div>
+                    </div>
+                    <div class="label-detail-right">
+                        <div align="center"> QR Code in here</div>
+                        <div class="label-upc">UPC NO: 1234567890</div>
+                        <div class="label-bpom-title">BPOM RI</div>
                     </div>
                 </div>
             </div>

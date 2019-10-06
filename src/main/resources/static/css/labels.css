@@ -20,23 +20,72 @@ body
     margin: 0mm 10mm 0mm 10mm; /* margin you want for the content */
 }
 
-.label-print{
-    width: 100%;
-    /*width: 10cm;*/
-    /*height: 5cm;*/
-    background: grey;
-}
-
-.label-description{
-
-}
-
-.label-detail{
-    width: 70%;
-    background: grey;
-}
-
-.label-right{
-    width: 30%;
+.label-frame{
+    border: 1px solid #73AD21;
+    margin: 6px;
     overflow: hidden;
+    width: 133px;
+    height: 57px;
+    position: relative;
+    float: left;
+}
+
+.label-desciption{
+    padding-right: 3px;
+    padding-left: 3px;
+    padding-top: 3px;
+    font-size: 4px;
+}
+
+.label-detail-left{
+    width: 60%;
+    padding-left: 3px;
+    float: left;
+    font-size: 4px;
+}
+
+.label-detail-right{
+    margin-left: 60%;
+    width: 40%;
+    padding-left: 3px;
+    padding-right: 3px;
+    font-size: 4px;
+}
+
+.label-upc{
+    font-weight: bold;
+    text-align: center;
+    padding-top: 3px;
+    font-size: 4px;
+}
+
+.label-bpom-title{
+    font-weight: bold;
+    text-align: center;
+    font-size: 4px;
+}
+
+.label-mfg{
+    padding-top: 3px;
+    float: left;
+    width: 50%;
+    font-size: 4px;
+}
+
+.label-batch{
+    width: 50%;
+    margin-left: 50%;
+    font-size: 4px;
+    padding-top: 3px;
+}
+
+.label-company{
+    position: absolute;
+    bottom: 0;
+    font-size: 3px;
+}
+
+.label-detail1{
+    padding-top: 3px;
+    font-size: 4px;
 }
