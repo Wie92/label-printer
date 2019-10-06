@@ -3,6 +3,7 @@
 $(document).ready(function () {
     var articles;
 
+
     $('#inputExcelFile').change(function (e) {
 
         showLoading();
@@ -70,6 +71,25 @@ $(document).ready(function () {
     $('#print-label-btn').click(function () {
         if(articles){
             generateLabel();
+
+            var doc = new jsPDF();
+
+            var elementHandler = {
+                '#ignorePDF': function (element, renderer) {
+                    return true;
+                }
+            };
+
+            doc.fromHTML(
+                document.getElementById("label-content").innerHTML,
+                15,
+                15,
+                {
+                    'width': 180//,'elementHandlers': elementHandler
+                });
+
+            // Output as Data URI
+            doc.output('datauri');
         }
     });
 
@@ -119,8 +139,8 @@ $(document).ready(function () {
 
                 new QRCode(document.getElementById(qrCodeId), {
                     text: upcNo,
-                    width: 30,
-                    height: 30,
+                    width: 32,
+                    height: 32,
                     colorDark : "#000000",
                     colorLight : "#ffffff",
                     correctLevel :  QRCode.CorrectLevel.H
